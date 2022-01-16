@@ -1,0 +1,123 @@
+/Users/shivswe/Machine_Learning/venv/bin/python /Users/shivswe/Machine_Learning/Assessments/NationalGrid/Scripts/Main.py
+=======================================
+Performing DataInjestion
+
+Reading tablename: RECEIVED from sqllite_db: ../Data/takehomeDB.db
+----RECEIVED---
+          RECEIVED_DATE RECEIVED_TIME                  KEY
+0  2011-12-01 00:00:00      06:12:AM  6123924566510169481
+1  2011-12-01 00:00:00      06:40:AM  6550143904606045348
+2  2011-12-01 00:00:00      07:02:AM  4924598222457909414
+3  2011-12-01 00:00:00      07:28:AM  2765111898258395044
+4  2011-12-01 00:00:00      07:51:AM  1361189980347937825
+Table Shape:  (529769, 3)
+Reading tablename: REQ_INFO from sqllite_db: ../Data/takehomeDB.db
+----REQ_INFO---
+   REQUEST_TYPE     TOWN_NAME                  KEY
+0            E     BROOKLINE  6123924566510169481
+1            N     BROOKLINE  6550143904606045348
+2            E    DORCHESTER  4924598222457909414
+3            E    DORCHESTER  2765111898258395044
+4            N  WEST ROXBURY  1361189980347937825
+Table Shape:  (529769, 3)
+# null data in the dataframe:  RECEIVED_DATE         0
+RECEIVED_TIME         0
+REQUEST_TYPE          0
+TOWN_NAME             0
+YEAR                  0
+MONTH                 0
+WEEK                  0
+DAYS                  0
+REQUEST_TYPE_E        0
+REQUEST_TYPE_N        0
+REQUEST_TYPE_TOTAL    0
+REQUEST_ET_RATIO      0
+dtype: int64
+ Shape of the merged dataset with engineered features:
+ (529769, 12)
+ Columns in the merged dataset with engineered features:
+ Index(['RECEIVED_DATE', 'RECEIVED_TIME', 'REQUEST_TYPE', 'TOWN_NAME', 'YEAR',
+       'MONTH', 'WEEK', 'DAYS', 'REQUEST_TYPE_E', 'REQUEST_TYPE_N',
+       'REQUEST_TYPE_TOTAL', 'REQUEST_ET_RATIO'],
+      dtype='object')
+=======================================
+Performing ExploratoryDataAanalysis
+
+Shape of the input dataset:  (529769, 12)
+Shape of the Subdaily is (255163, 8)
+Shape of the Daily is (1462, 8)
+Shape of the Daily_Town is (115447, 9)
+Shape of the Midweek is (488, 8)
+Shape of the Weekly is (210, 8)
+Shape of the Monthly is (49, 8)
+Shape of the Town is (158, 4)
+=======================================
+Building Model
+Model Name:  Prophet
+
+Time to Split Test and Train Data:  2015-01-01 00:00:00
+Data Shapes for Data: Data is (1462, 8)
+Data Shapes for Data: Test is (335, 8)
+Data Shapes for Data: Train is (1127, 8)
+
+Params for Prophet Model
+ {'changepoint_prior_scale': 0.1, 'seasonality_prior_scale': 30.0, 'n_changepoints': 100, 'daily_seasonality': False, 'weekly_seasonality': True, 'yearly_seasonality': False}
+Parameter for Prophet Model:
+{'changepoint_prior_scale': 0.1, 'seasonality_prior_scale': 30.0, 'n_changepoints': 100, 'daily_seasonality': False, 'weekly_seasonality': True, 'yearly_seasonality': False}
+Parameter for Prophet Model:
+{'changepoint_prior_scale': 0.1, 'seasonality_prior_scale': 30.0, 'n_changepoints': 100, 'daily_seasonality': False, 'weekly_seasonality': True, 'yearly_seasonality': False}
+Saving Figure to:  ../Figure/FBProphet/Train_test_QAQC_for_col_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/FBProphet/Train_test_QAQC_for_col_REQUEST_TYPE_E.png
+Initial log joint probability = -51.2905
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+      99       1833.36   0.000370633       99.9959           1           1      117
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+     199       1833.43    0.00121987        78.557      0.7177           1      225
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+     299       1833.46    7.3205e-06       73.3648           1           1      335
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+     399       1833.47   2.45733e-06       70.3778       0.232           1      442
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+     475       1833.47   6.40921e-08       56.8462      0.3663           1      523
+Optimization terminated normally:
+  Convergence detected: relative gradient magnitude is below tolerance
+Initial log joint probability = -23.2292
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+      99       2290.88   0.000242373       87.9302           1           1      120
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+     199       2291.58   7.96022e-05       67.6011           1           1      225
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+     299       2291.75   0.000306224       64.4229           1           1      329
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+     399       2291.82    0.00022308       75.3993      0.3023           1      439
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+     499       2291.97   5.17381e-05       74.6826      0.6324      0.6324      549
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+     584       2291.98   3.78034e-05       84.1196   4.436e-07       0.001      684  LS failed, Hessian reset
+     599       2291.99   3.87269e-05       87.1381      0.9835      0.9835      699
+    Iter      log prob        ||dx||      ||grad||       alpha      alpha0  # evals  Notes
+     632       2291.99   1.21827e-07       69.3241      0.7358      0.7358      737
+Optimization terminated normally:
+  Convergence detected: relative gradient magnitude is below tolerance
+Saving Figure to:  ../Figure/FBProphet/ModelForecastPlotWithTest_for_col_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/FBProphet/ModelForecastComponentPlots_for_col_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/FBProphet/ModelForecastPlotWithTest_for_col_REQUEST_TYPE_E.png
+Saving Figure to:  ../Figure/FBProphet/ModelForecastComponentPlots_for_col_REQUEST_TYPE_E.png
+Saving Figure to:  ../Figure/FBProphet/CustomModelForecastPlot_for_col_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/FBProphet/CustomModelForecastPlot_for_col_REQUEST_TYPE_E.png
+Computing Model Metric for Prop:  REQUEST_TYPE_TOTAL
+RMSE: 156.1190944660015
+R2Score for Training Data:
+ 0.5493052033207935
+Mean Error:  40.583377688146925
+Mean of Test Data:  400.71343283582087
+Mean of Predicted Data:  441.2968105239678
+Computing Model Metric for Prop:  REQUEST_TYPE_E
+RMSE: 14.472479736687704
+R2Score for Training Data:
+ 0.12902177443474172
+Mean Error:  3.9799711573904943
+Mean of Test Data:  39.49850746268657
+Mean of Predicted Data:  35.518536305296074
+
+Process finished with exit code 0

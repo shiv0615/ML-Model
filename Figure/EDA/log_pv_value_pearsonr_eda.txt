@@ -1,0 +1,132 @@
+/Users/shivswe/Machine_Learning/venv/bin/python /Users/shivswe/Machine_Learning/Assessments/NationalGrid/Scripts/Main.py
+=======================================
+Performing DataInjestion
+
+Reading tablename: RECEIVED from sqllite_db: ../Data/takehomeDB.db
+----RECEIVED---
+          RECEIVED_DATE RECEIVED_TIME                  KEY
+0  2011-12-01 00:00:00      06:12:AM  6123924566510169481
+1  2011-12-01 00:00:00      06:40:AM  6550143904606045348
+2  2011-12-01 00:00:00      07:02:AM  4924598222457909414
+3  2011-12-01 00:00:00      07:28:AM  2765111898258395044
+4  2011-12-01 00:00:00      07:51:AM  1361189980347937825
+Table Shape:  (529769, 3)
+Reading tablename: REQ_INFO from sqllite_db: ../Data/takehomeDB.db
+----REQ_INFO---
+   REQUEST_TYPE     TOWN_NAME                  KEY
+0            E     BROOKLINE  6123924566510169481
+1            N     BROOKLINE  6550143904606045348
+2            E    DORCHESTER  4924598222457909414
+3            E    DORCHESTER  2765111898258395044
+4            N  WEST ROXBURY  1361189980347937825
+Table Shape:  (529769, 3)
+# null data in the dataframe:  RECEIVED_DATE         0
+RECEIVED_TIME         0
+REQUEST_TYPE          0
+TOWN_NAME             0
+YEAR                  0
+MONTH                 0
+WEEK                  0
+DAYS                  0
+REQUEST_TYPE_E        0
+REQUEST_TYPE_N        0
+REQUEST_TYPE_TOTAL    0
+REQUEST_ET_RATIO      0
+dtype: int64
+ Shape of the merged dataset with engineered features:
+ (529769, 12)
+ Columns in the merged dataset with engineered features:
+ Index(['RECEIVED_DATE', 'RECEIVED_TIME', 'REQUEST_TYPE', 'TOWN_NAME', 'YEAR',
+       'MONTH', 'WEEK', 'DAYS', 'REQUEST_TYPE_E', 'REQUEST_TYPE_N',
+       'REQUEST_TYPE_TOTAL', 'REQUEST_ET_RATIO'],
+      dtype='object')
+=======================================
+Performing ExploratoryDataAanalysis
+
+Shape of the input dataset:  (529769, 12)
+Shape of the Subdaily is (255163, 8)
+Shape of the Daily is (1462, 8)
+Shape of the Daily_Town is (115447, 9)
+Shape of the Midweek is (488, 8)
+Shape of the Weekly is (210, 8)
+Shape of the Monthly is (49, 8)
+Shape of the Town is (158, 4)
+Pearson Correlation (between E vs N) for Daily Data 0.6373151307664184
+Pearson Correlation (between E vs N) for Weekly Data -0.0335673850198724
+----------------------------------------------------
+Performing Augmented Dickey-Fuller Test for Stationairy for Data: Daily and Column: REQUEST_TYPE_E
+Test Statistic                -7.038495e+00
+p-value                        5.930292e-10
+#Lags Used                     2.200000e+01
+Number of Observations Used    1.439000e+03
+Critical Value (1%)           -3.434902e+00
+Critical Value (5%)           -2.863551e+00
+Critical Value (10%)          -2.567840e+00
+dtype: float64
+Performing Kwiatkowski-Phillips-Schmidt-Shin Test for Stationairy for Data: Daily and Column: REQUEST_TYPE_E
+Test Statistic            0.598474
+p-value                   0.022775
+Lags Used                24.000000
+Critical Value (10%)      0.347000
+Critical Value (5%)       0.463000
+Critical Value (2.5%)     0.574000
+Critical Value (1%)       0.739000
+dtype: float64
+----------------------------------------------------
+Performing Augmented Dickey-Fuller Test for Stationairy for Data: Daily and Column: REQUEST_TYPE_N
+Test Statistic                   -2.708762
+p-value                           0.072534
+#Lags Used                       22.000000
+Number of Observations Used    1439.000000
+Critical Value (1%)              -3.434902
+Critical Value (5%)              -2.863551
+Critical Value (10%)             -2.567840
+dtype: float64
+Performing Kwiatkowski-Phillips-Schmidt-Shin Test for Stationairy for Data: Daily and Column: REQUEST_TYPE_N
+Test Statistic            0.405256
+p-value                   0.074890
+Lags Used                24.000000
+Critical Value (10%)      0.347000
+Critical Value (5%)       0.463000
+Critical Value (2.5%)     0.574000
+Critical Value (1%)       0.739000
+dtype: float64
+----------------------------------------------------
+Performing Augmented Dickey-Fuller Test for Stationairy for Data: Weekly and Column: REQUEST_TYPE_E
+Test Statistic                -1.074348e+01
+p-value                        2.779725e-19
+#Lags Used                     0.000000e+00
+Number of Observations Used    2.090000e+02
+Critical Value (1%)           -3.462032e+00
+Critical Value (5%)           -2.875471e+00
+Critical Value (10%)          -2.574195e+00
+dtype: float64
+Performing Kwiatkowski-Phillips-Schmidt-Shin Test for Stationairy for Data: Weekly and Column: REQUEST_TYPE_E
+Test Statistic            0.320085
+p-value                   0.100000
+Lags Used                15.000000
+Critical Value (10%)      0.347000
+Critical Value (5%)       0.463000
+Critical Value (2.5%)     0.574000
+Critical Value (1%)       0.739000
+dtype: float64
+----------------------------------------------------
+Performing Augmented Dickey-Fuller Test for Stationairy for Data: Weekly and Column: REQUEST_TYPE_N
+Test Statistic                  -4.911723
+p-value                          0.000033
+#Lags Used                       6.000000
+Number of Observations Used    203.000000
+Critical Value (1%)             -3.462980
+Critical Value (5%)             -2.875885
+Critical Value (10%)            -2.574416
+dtype: float64
+Performing Kwiatkowski-Phillips-Schmidt-Shin Test for Stationairy for Data: Weekly and Column: REQUEST_TYPE_N
+Test Statistic            0.151484
+p-value                   0.100000
+Lags Used                15.000000
+Critical Value (10%)      0.347000
+Critical Value (5%)       0.463000
+Critical Value (2.5%)     0.574000
+Critical Value (1%)       0.739000
+dtype: float64
+Saving Figure to:  ../Figure/EDA/line_DF_Subdaily_REQ.png

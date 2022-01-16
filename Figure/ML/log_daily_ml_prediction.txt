@@ -1,0 +1,235 @@
+/Users/shivswe/Machine_Learning/venv/bin/python /Users/shivswe/Machine_Learning/Assessments/NationalGrid/Scripts/Main.py
+=======================================
+Performing DataInjestion
+
+Reading tablename: RECEIVED from sqllite_db: ../Data/takehomeDB.db
+----RECEIVED---
+          RECEIVED_DATE RECEIVED_TIME                  KEY
+0  2011-12-01 00:00:00      06:12:AM  6123924566510169481
+1  2011-12-01 00:00:00      06:40:AM  6550143904606045348
+2  2011-12-01 00:00:00      07:02:AM  4924598222457909414
+3  2011-12-01 00:00:00      07:28:AM  2765111898258395044
+4  2011-12-01 00:00:00      07:51:AM  1361189980347937825
+Table Shape:  (529769, 3)
+Reading tablename: REQ_INFO from sqllite_db: ../Data/takehomeDB.db
+----REQ_INFO---
+   REQUEST_TYPE     TOWN_NAME                  KEY
+0            E     BROOKLINE  6123924566510169481
+1            N     BROOKLINE  6550143904606045348
+2            E    DORCHESTER  4924598222457909414
+3            E    DORCHESTER  2765111898258395044
+4            N  WEST ROXBURY  1361189980347937825
+Table Shape:  (529769, 3)
+# null data in the dataframe:  RECEIVED_DATE         0
+RECEIVED_TIME         0
+REQUEST_TYPE          0
+TOWN_NAME             0
+YEAR                  0
+MONTH                 0
+WEEK                  0
+DAYS                  0
+REQUEST_TYPE_E        0
+REQUEST_TYPE_N        0
+REQUEST_TYPE_TOTAL    0
+REQUEST_ET_RATIO      0
+dtype: int64
+ Shape of the merged dataset with engineered features:
+ (529769, 12)
+ Columns in the merged dataset with engineered features:
+ Index(['RECEIVED_DATE', 'RECEIVED_TIME', 'REQUEST_TYPE', 'TOWN_NAME', 'YEAR',
+       'MONTH', 'WEEK', 'DAYS', 'REQUEST_TYPE_E', 'REQUEST_TYPE_N',
+       'REQUEST_TYPE_TOTAL', 'REQUEST_ET_RATIO'],
+      dtype='object')
+<class 'pandas.core.frame.DataFrame'>
+DatetimeIndex: 529769 entries, 2011-12-01 06:12:00 to 2015-12-01 15:03:00
+Data columns (total 12 columns):
+ #   Column              Non-Null Count   Dtype
+---  ------              --------------   -----
+ 0   RECEIVED_DATE       529769 non-null  datetime64[ns]
+ 1   RECEIVED_TIME       529769 non-null  timedelta64[ns]
+ 2   REQUEST_TYPE        529769 non-null  object
+ 3   TOWN_NAME           529769 non-null  object
+ 4   YEAR                529769 non-null  int64
+ 5   MONTH               529769 non-null  int64
+ 6   WEEK                529769 non-null  int64
+ 7   DAYS                529769 non-null  int64
+ 8   REQUEST_TYPE_E      529769 non-null  int64
+ 9   REQUEST_TYPE_N      529769 non-null  int64
+ 10  REQUEST_TYPE_TOTAL  529769 non-null  int64
+ 11  REQUEST_ET_RATIO    529769 non-null  float64
+dtypes: datetime64[ns](1), float64(1), int64(7), object(2), timedelta64[ns](1)
+memory usage: 52.5+ MB
+ Data Info
+ None
+=======================================
+Performing ExploratoryDataAanalysis
+
+Shape of the input dataset:  (529769, 12)
+Shape of the Subdaily is (255163, 8)
+Shape of the Daily is (1462, 8)
+Shape of the Daily_Town is (115447, 9)
+Shape of the Midweek is (488, 8)
+Shape of the Weekly is (210, 8)
+Shape of the Monthly is (49, 8)
+Shape of the Town is (158, 4)
+Saving Figure to:  ../Figure/EDA/line_DF_Daily_REQ.png
+Saving Figure to:  ../Figure/EDA/line_DF_Weekly_REQ.png
+Saving Figure to:  ../Figure/EDA/line_DF_Daily_REQ_Log.png
+Saving Figure to:  ../Figure/EDA/line_DF_Weekly_REQ_Log.png
+Saving Figure to:  ../Figure/EDA/line_sns_data_Daily_Town_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/line_sns_data_Daily_Town_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/line_sns_data_Weekly_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/line_sns_data_Weekly_REQUEST_TYPE_E.png
+Saving Figure to:  ../Figure/EDA/line_sns_data_Weekly_REQUEST_TYPE_N.png
+Saving Figure to:  ../Figure/EDA/bar_sns_data_Daily_Town_REQUEST_TYPE_TOTAL.png
+No handles with labels found to put in legend.
+Saving Figure to:  ../Figure/EDA/dist_sns_data_Daily_None.png
+No handles with labels found to put in legend.
+Saving Figure to:  ../Figure/EDA/dist_sns_data_Daily_None.png
+No handles with labels found to put in legend.
+Saving Figure to:  ../Figure/EDA/dist_sns_data_Daily_None.png
+Saving Figure to:  ../Figure/EDA/line_sns_data_Daily_Town_REQUEST_TYPE_E.png
+Pearson Correlation (between E vs N) for Daily Data 0.6373151307664184
+Pearson Correlation (between E vs N) for Daily Data -0.0335673850198724
+No handles with labels found to put in legend.
+Saving Figure to:  ../Figure/EDA/regplot_sns_data_Daily_REQUEST_TYPE_N.png
+No handles with labels found to put in legend.
+Saving Figure to:  ../Figure/EDA/regplot_sns_data_Daily_REQUEST_TYPE_N.png
+No handles with labels found to put in legend.
+Saving Figure to:  ../Figure/EDA/face_plot_regplot_E_vs_N_by_Year.png
+*c* argument looks like a single numeric RGB or RGBA sequence, which should be avoided as value-mapping will have precedence in case its length matches with *x* & *y*.  Please use the *color* keyword-argument or provide a 2D array with a single row if you intend to specify the same RGB or RGBA value for all points.
+Saving Figure to:  ../Figure/EDA/scatter_DF_Daily_.png
+*c* argument looks like a single numeric RGB or RGBA sequence, which should be avoided as value-mapping will have precedence in case its length matches with *x* & *y*.  Please use the *color* keyword-argument or provide a 2D array with a single row if you intend to specify the same RGB or RGBA value for all points.
+Saving Figure to:  ../Figure/EDA/scatter_DF_Weekly_.png
+Saving Figure to:  ../Figure/EDA/bar_DF_Town_vardist.png
+Corelation coefficient between Normal and Emergency calls observed in the daily frequency:  0.7680146510903503
+Saving Figure to:  ../Figure/EDA/MovingAvgPlot_data_Daily_forCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/ExpSmoothingPlot_data_Daily_forCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/ACFPlot_data_Daily_forCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/PACFPlot_data_Daily_forCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/ETSPlot_data_Daily_forCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/MovingAvgPlot_data_Weekly_forCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/ExpSmoothingPlot_data_Weekly_forCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/ACFPlot_data_Weekly_forCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/PACFPlot_data_Weekly_forCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/ETSPlot_data_Weekly_forCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/DoubleExpSmoothingPlot_data_Daily_forCol_REQUEST_TYPE_E.png
+Saving Figure to:  ../Figure/EDA/DoubleExpSmoothingPlot_data_Daily_forCol_REQUEST_TYPE_N.png
+Saving Figure to:  ../Figure/EDA/DoubleExpSmoothingPlot_data_Daily_forCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/EDA/DoubleExpSmoothingPlot_data_Weekly_forCol_REQUEST_TYPE_E.png
+Saving Figure to:  ../Figure/EDA/DoubleExpSmoothingPlot_data_Weekly_forCol_REQUEST_TYPE_N.png
+Saving Figure to:  ../Figure/EDA/DoubleExpSmoothingPlot_data_Weekly_forCol_REQUEST_TYPE_TOTAL.png
+----------------------------------------------------
+Performing Augmented Dickey-Fuller Test for Stationairy for Data: Daily and Column: REQUEST_TYPE_E
+Test Statistic                -7.038495e+00
+p-value                        5.930292e-10
+#Lags Used                     2.200000e+01
+Number of Observations Used    1.439000e+03
+Critical Value (1%)           -3.434902e+00
+Critical Value (5%)           -2.863551e+00
+Critical Value (10%)          -2.567840e+00
+dtype: float64
+Performing Kwiatkowski-Phillips-Schmidt-Shin Test for Stationairy for Data: Daily and Column: REQUEST_TYPE_E
+Test Statistic            0.598474
+p-value                   0.022775
+Lags Used                24.000000
+Critical Value (10%)      0.347000
+Critical Value (5%)       0.463000
+Critical Value (2.5%)     0.574000
+Critical Value (1%)       0.739000
+dtype: float64
+----------------------------------------------------
+Performing Augmented Dickey-Fuller Test for Stationairy for Data: Daily and Column: REQUEST_TYPE_N
+Test Statistic                   -2.708762
+p-value                           0.072534
+#Lags Used                       22.000000
+Number of Observations Used    1439.000000
+Critical Value (1%)              -3.434902
+Critical Value (5%)              -2.863551
+Critical Value (10%)             -2.567840
+dtype: float64
+Performing Kwiatkowski-Phillips-Schmidt-Shin Test for Stationairy for Data: Daily and Column: REQUEST_TYPE_N
+Test Statistic            0.405256
+p-value                   0.074890
+Lags Used                24.000000
+Critical Value (10%)      0.347000
+Critical Value (5%)       0.463000
+Critical Value (2.5%)     0.574000
+Critical Value (1%)       0.739000
+dtype: float64
+----------------------------------------------------
+Performing Augmented Dickey-Fuller Test for Stationairy for Data: Weekly and Column: REQUEST_TYPE_E
+Test Statistic                -1.074348e+01
+p-value                        2.779725e-19
+#Lags Used                     0.000000e+00
+Number of Observations Used    2.090000e+02
+Critical Value (1%)           -3.462032e+00
+Critical Value (5%)           -2.875471e+00
+Critical Value (10%)          -2.574195e+00
+dtype: float64
+Performing Kwiatkowski-Phillips-Schmidt-Shin Test for Stationairy for Data: Weekly and Column: REQUEST_TYPE_E
+Test Statistic            0.320085
+p-value                   0.100000
+Lags Used                15.000000
+Critical Value (10%)      0.347000
+Critical Value (5%)       0.463000
+Critical Value (2.5%)     0.574000
+Critical Value (1%)       0.739000
+dtype: float64
+----------------------------------------------------
+Performing Augmented Dickey-Fuller Test for Stationairy for Data: Weekly and Column: REQUEST_TYPE_N
+Test Statistic                  -4.911723
+p-value                          0.000033
+#Lags Used                       6.000000
+Number of Observations Used    203.000000
+Critical Value (1%)             -3.462980
+Critical Value (5%)             -2.875885
+Critical Value (10%)            -2.574416
+dtype: float64
+Performing Kwiatkowski-Phillips-Schmidt-Shin Test for Stationairy for Data: Weekly and Column: REQUEST_TYPE_N
+Test Statistic            0.151484
+p-value                   0.100000
+Lags Used                15.000000
+Critical Value (10%)      0.347000
+Critical Value (5%)       0.463000
+Critical Value (2.5%)     0.574000
+Critical Value (1%)       0.739000
+dtype: float64
+=======================================
+Building Model
+Model Name:  ML
+
+Time to Split Test and Train Data:  2015-01-01 00:00:00
+Data Shapes for Data: Data is (1462, 8)
+Data Shapes for Data: Test is (335, 8)
+Data Shapes for Data: Train is (1127, 8)
+
+Shape of the Supv Training Data: (1122, 12)
+Shape of the Supv Test Data: (330, 12)
+Shape of the Supv Full Data: (1457, 12)
+Saving Figure to:  ../Figure/ML/Train_test_QAQC.png
+Random Forest Regression Score:  0.6429758404943429
+Random Forest Feature Importance:  [(0.3702317380509433, 'var1(t-1)'), (0.21647206885501552, 'var1(t-5)'), (0.16310234728750114, 'var1(t-2)'), (0.11966026418402338, 'var1(t-4)'), (0.037829001755493, 'var1(t-3)'), (0.03367481853897915, 'var2(t-2)'), (0.018104565826386997, 'var2(t-1)'), (0.016479101715543152, 'var2(t-4)'), (0.012248969651174654, 'var2(t-5)'), (0.012197124134939622, 'var2(t-3)')]
+Saving Figure to:  ../Figure/ML/ForecaseForCol_REQUEST_TYPE_TOTAL.png
+Saving Figure to:  ../Figure/ML/ForecaseForCol_REQUEST_TYPE_E.png
+Saving Figure to:  ../Figure/ML/FeatureImportances.png
+Saving Figure to:  ../Figure/ML/TestVsPredictedDataComparisons.png
+Saving Figure to:  ../Figure/ML/TestVsPredictedDataComparisons.png
+RMSE for Training Data:
+ 35.61489761615845
+R2Score for Training Data:
+ 0.9473337744984305
+Mean Error for Training Data
+ var1(t)    158.790901
+var2(t)    157.398048
+dtype: float64
+RMSE for Test Data:
+ 109.11404771109835
+R2Score for Test Data:
+ 0.6429758404943429
+Mean Error for Training Data
+ var1(t)    190.549102
+var2(t)    174.893322
+dtype: float64
+
+Process finished with exit code 0
